@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int minimumLength(string s) {
+        int left = 0;
+        int right = s.size()-1;
+        while(left < right && s[left]==s[right])
+        {
+            char temp = s[left];
+            while(left <= right && s[left] == temp)
+            {
+                left++;
+            }
+            while(left<=right && s[right]==temp)
+            {
+                right--;
+            }
+        }
+        return right-left+1;
+    }
+};
+
+//https://leetcode.com/submissions/detail/1194659955/
