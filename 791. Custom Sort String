@@ -1,0 +1,21 @@
+class Solution(object):
+    def customSortString(self, order, s):
+        freq = [0] * 26
+    
+        for c in s:
+            freq[ord(c) - ord('a')] += 1
+        
+        ans = ""
+        
+        for c in order:
+            while freq[ord(c) - ord('a')] > 0:
+                ans += c
+                freq[ord(c) - ord('a')] -= 1
+        
+        for c in range(ord('a'), ord('z') + 1):
+            while freq[c - ord('a')] > 0:
+                ans += chr(c)
+                freq[c - ord('a')] -= 1
+        
+        return ans
+        
