@@ -1,0 +1,26 @@
+class Solution(object):
+    def insert(self, intervals, newinterval):
+        res = []
+        i = 0 
+        n = len(intervals)
+        while(i<n and intervals[i][1]<newinterval[0]):
+            res.append(intervals[i])
+            i = i+1
+
+        #Merge the intervals
+        while(i<n and newinterval[1]>=intervals[i][0]):
+            newinterval[0] = min(intervals[i][0],newinterval[0])
+            newinterval[1] = max(intervals[i][1],newinterval[1])
+            i = i+1
+        res.append(newinterval)
+
+        #append the remaining intervals
+        while(i<n):
+            res.append(intervals[i])
+            i = i+1
+        
+        #this is your final answer bro (You did it !!)
+        return res
+
+
+#Problem Link - https://leetcode.com/problems/insert-interval/
