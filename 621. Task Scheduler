@@ -1,0 +1,28 @@
+class Solution(object):
+    def leastInterval(self, tasks, n):
+        task_counts = {}
+    
+        # Count the frequency of each task
+        for task in tasks:
+            if task in task_counts:
+                task_counts[task] += 1
+            else:
+                task_counts[task] = 1
+        
+        # Get the maximum frequency
+        max_count = 0
+        for count in task_counts.values():
+            max_count = max(max_count, count)
+        
+        # Count how many tasks have the same maximum frequency
+        max_count_tasks = sum(1 for count in task_counts.values() if count == max_count)
+        
+        # Calculate the minimum number of intervals required
+        result = (max_count - 1) * (n + 1) + max_count_tasks
+        
+        # The result might be less than the length of the tasks list,
+        # in such cases, return the length of the tasks list as the minimum intervals required.
+        return max(result, len(tasks))
+            
+
+#Link -https://leetcode.com/problems/task-scheduler/?envType=daily-question&envId=2024-03-19
