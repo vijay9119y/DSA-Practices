@@ -1,0 +1,13 @@
+class Solution(object):
+    def reverse(self, curr, prev):
+        if curr is None:
+            return prev
+
+        fut = curr.next
+        curr.next = prev
+        return self.reverse(fut, curr)
+        
+    def reverseList(self, head):
+        return self.reverse(head, None)
+
+#problem link-https://leetcode.com/problems/reverse-linked-list/
