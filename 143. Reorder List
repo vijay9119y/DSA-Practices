@@ -1,0 +1,24 @@
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def reorderList(self, head):
+        store_nodes = []
+        temp= head
+        while temp:
+            store_nodes.append(temp)
+            temp=temp.next
+
+        newhead = store_nodes[0]
+        tail = None
+        for i in range(len(store_nodes)//2):
+            store_nodes[i].next=store_nodes[-1-i]
+            store_nodes[i].next.next=store_nodes[i+1]
+            tail=store_nodes[i].next.next
+        if tail:
+            tail.next = None
+        head=newhead
+
+#pronblme link-https://leetcode.com/problems/reorder-list/description/
