@@ -1,0 +1,14 @@
+class Solution(object):
+    def findDuplicate(self, nums):
+        unique_num = set(nums)
+        dict_num = {}
+        for i in nums:
+            if i not in dict_num:
+                dict_num[i]=1
+            else:
+                dict_num[i]+=1
+        for i in dict_num:
+            if dict_num[i]!=1:
+                return i
+
+#problem link-https://leetcode.com/problems/find-the-duplicate-number/description/
