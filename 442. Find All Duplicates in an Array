@@ -1,0 +1,10 @@
+class Solution(object):
+    def findDuplicates(self, nums):
+        res=[]
+        nums.sort()
+        for i in range(1,len(nums)):
+            if nums[i]==nums[i-1]:
+                res.append(nums[i])
+        return res
+
+#problem link - https://leetcode.com/problems/find-all-duplicates-in-an-array/
