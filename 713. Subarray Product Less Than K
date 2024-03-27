@@ -1,0 +1,23 @@
+class Solution(object):
+    def numSubarrayProductLessThanK(self, nums, k):
+        ans = 0
+        product = 1
+        left = 0
+        right = 0
+        n = len(nums)
+        
+        while right < n:
+            product *= nums[right]
+            
+            while product >= k and left <= right:
+                product //= nums[left]
+                left += 1
+            
+            ans += 1 + (right - left)
+            
+            right += 1
+        
+        return ans
+
+
+#problem link -https://leetcode.com/problems/subarray-product-less-than-k/
